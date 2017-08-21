@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'active_model_serializers', '0.10.6'
+gem 'rails-footnotes'
+
+
+gem 'hirb'
+gem 'faker'
+gem 'paperclip'
+gem 'kaminari'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
