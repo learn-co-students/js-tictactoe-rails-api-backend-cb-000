@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  resources :games, only: [:show, :index, :new, :create, :update]
   root 'home#index'
 
   # Example of regular route:
