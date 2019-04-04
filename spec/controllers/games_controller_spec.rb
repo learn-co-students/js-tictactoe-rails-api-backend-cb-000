@@ -8,7 +8,7 @@ RSpec.describe GamesController, :type => :controller do
   describe "#create" do
     it "can create a new Game instance" do
       post :create, {
-        :state => ["X", "", "", "", "", "", "", "", ""]
+          params: {:state => ["X", "", "", "", "", "", "", "", ""]}
       }
 
       expect(Game.count).to eq(1)
@@ -16,7 +16,7 @@ RSpec.describe GamesController, :type => :controller do
 
     it "properly serializes the 'state' attribute as an array instead of as a string" do
       post :create, {
-        :state => ["X", "", "", "", "", "", "", "", ""]
+        params: {:state => ["X", "", "", "", "", "", "", "", ""]}
       }
 
       expect(Game.last.state).to eq ["X", "", "", "", "", "", "", "", ""]
@@ -27,7 +27,7 @@ RSpec.describe GamesController, :type => :controller do
     it "returns a JSON:API-compliant, serialized object representing the specified Game instance" do
       game = Game.create(:state => ["", "", "", "", "", "O", "", "", "X"])
 
-      get :show, id: game.id
+      get :show, params: {id: game.id}
       returned_json = response.body
       parsed_json = JSON.parse(returned_json)
 
@@ -53,8 +53,8 @@ RSpec.describe GamesController, :type => :controller do
       game = Game.create(:state => ["X", "", "", "", "", "", "", "", ""])
 
       patch :update, {
-        :id => game.id,
-        :state => ["X", "O", "", "", "", "", "", "", ""]
+        params: {:id => game.id,
+        :state => ["X", "O", "", "", "", "", "", "", ""]}
       }
 
       expect(Game.find(game.id).state).to eq ["X", "O", "", "", "", "", "", "", ""]
