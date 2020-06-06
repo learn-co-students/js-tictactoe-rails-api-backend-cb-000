@@ -1,2 +1,3 @@
-class Game < ActiveRecord::Base
-end
+    class Game < ActiveRecord::Base
+      serialize :state, Array
+    end
