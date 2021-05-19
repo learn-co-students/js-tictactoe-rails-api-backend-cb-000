@@ -54,7 +54,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  
   resources :games, only: [:show, :index, :new, :create, :update]
   
 end
